@@ -1,10 +1,6 @@
 #!/bin/bash
-#替换feeds源为中科大镜像，防止github拉取超时
-sed -i 's|https://github.com/immortalwrt/luci|https://mirrors.ustc.edu.cn/immortalwrt/luci.git|g' feeds.conf.default
-sed -i 's|https://github.com/immortalwrt/packages|https://mirrors.ustc.edu.cn/immortalwrt/packages.git|g' feeds.conf.default
-sed -i 's|https://github.com/immortalwrt/routing|https://mirrors.ustc.edu.cn/immortalwrt/routing.git|g' feeds.conf.default
-
-# 替换系统内opkg软件源（路由器运行时的源，不是编译feed）
+# diy-part1.sh for ImmortalWrt 23.05
+# 重写 feeds.conf.default，使用中科大ImmortalWrt镜像
 cat > feeds.conf.default <<EOF
 src-git base https://mirrors.ustc.edu.cn/immortalwrt/packages.git;openwrt-23.05
 src-git luci https://mirrors.ustc.edu.cn/immortalwrt/luci.git;openwrt-23.05
