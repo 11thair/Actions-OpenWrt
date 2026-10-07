@@ -36,7 +36,7 @@ jobs:
 
       - name: Load feeds & config
         run: |
-          cp $FEEDS_CONF openwrt/feeds.conf.default
+          [ -f "$FEEDS_CONF" ] && cp $FEEDS_CONF openwrt/feeds.conf.default
           cp $CONFIG_FILE openwrt/.config
           cp $DIY_P1_SH openwrt/diy-part1.sh
           cp $DIY_P2_SH openwrt/diy-part2.sh
