@@ -36,14 +36,19 @@ jobs:
 
       - name: Load feeds & config
         run: |
-          [ -f "$FEEDS_CONF" ] && cp $FEEDS_CONF openwrt/feeds.conf.default
+         [ -f "$FEEDS_CONF" ] && cp $FEEDS_CONF openwrt/feeds.conf.default
           cp $CONFIG_FILE openwrt/.config
           cp $DIY_P1_SH openwrt/diy-part1.sh
           cp $DIY_P2_SH openwrt/diy-part2.sh
           chmod +x openwrt/diy*.sh
           cd openwrt
           ./diy-part1.sh
-          ./scripts/feeds update -a
+          # 最多重试3次 feeds update
+          for i in {1..3}; do
+            ./scripts/feeds update -a && break
+            echo "feeds update failed, retry $i, sleep 10s"
+            sleep 10
+          done
           ./scripts/feeds install -a
           ./diy-part2.sh
 
