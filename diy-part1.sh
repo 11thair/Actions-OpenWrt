@@ -7,3 +7,4 @@ src-git luci https://mirrors.ustc.edu.cn/immortalwrt/luci.git;openwrt-23.05
 src-git packages https://mirrors.ustc.edu.cn/immortalwrt/packages.git;openwrt-23.05
 src-git routing https://mirrors.ustc.edu.cn/immortalwrt/routing.git;openwrt-23.05
 EOF
+rm -rf package/emortal/default-settings
