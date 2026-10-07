@@ -1,5 +1,17 @@
 #!/bin/bash
-# 修改固件内opkg软件源为中科大
-sed -i 's|https://downloads.immortalwrt.org|https://mirrors.ustc.edu.cn/immortalwrt|g' package/base-files/files/etc/opkg/distfeeds.conf
-# 修改默认LAN地址为192.168.1.5（你之前用的管理地址！）
-sed -i 's/192.168.1.1/10.0.0.1/g' package/base-files/files/bin/config_generate
+# diy-part2.sh 额外插件源码拉取
+# Argon主题
+git clone https://mirror.ghproxy.com/https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
+# OpenClash
+git clone https://mirror.ghproxy.com/https://github.com/vernesong/OpenClash.git package/luci-app-openclash
+# v2rayA
+git clone https://mirror.ghproxy.com/https://github.com/v2rayA/v2rayA-openwrt.git package/luci-app-v2raya
+# ddnsto
+git clone https://mirror.ghproxy.com/https://github.com/linkease/ddnsto-openwrt.git package/luci-app-ddnsto
+# diskman 磁盘管理
+git clone https://mirror.ghproxy.com/https://github.com/lisaac/luci-app-diskman.git package/luci-app-diskman
+cp -r package/luci-app-diskman/luci-lib-diskman package/
+# 网络唤醒
+git clone https://mirror.ghproxy.com/https://github.com/sirpdboy/luci-app-timewol.git package/luci-app-timewol
+# 微信推送
+git clone https://mirror.ghproxy.com/https://github.com/tty228/luci-app-wechatpush.git package/luci-app-wechatpush
